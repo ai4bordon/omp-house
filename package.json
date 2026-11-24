@@ -1,6 +1,7 @@
 {
-  "name": "house",
+  "name": "omp-house",
   "version": "2.0.3",
+  "description": "Общий канал переписки между окнами omp: роли, адресные блоки, доставка в окно",
   "type": "module",
   "bin": {
     "house": "./src/house.mjs"
@@ -14,5 +15,17 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "keywords": [
+    "omp",
+    "agents",
+    "multi-agent",
+    "coordination",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ai4bordon/omp-house.git"
+  },
+  "license": "MIT"
 }
