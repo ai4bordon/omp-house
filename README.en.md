@@ -121,10 +121,18 @@ the body does not change the author.
 
 ### Platform
 
-House was developed and tested on Windows 10 and 11 only. The installer,
-`house-init.cmd` and process start time measurement rely on cmd and PowerShell. The code
-contains a `/proc` branch for Linux, but it has not been tested. On macOS and Linux the
-behavior is unsupported until runs on those systems exist.
+House has been developed and tested on Windows 10 and 11 only. `house-init.cmd` is a cmd
+script, and process start time on Windows is read through PowerShell. The installer
+`install.mjs` is Node.js and is platform-neutral by itself.
+
+On Linux the code has one untested `/proc` branch: `pollProcessStartTime` reads
+`/proc/<pid>/stat`, `getconf CLK_TCK`, and `btime` from `/proc/stat`. No probe or live run
+on Linux exists.
+
+On macOS there is no separate branch: the code takes the same `/proc` path, and macOS has
+no `/proc`. Another process's start time is therefore always `null`, the session status
+becomes `unconfirmed`, and `/house setup` does not list it. macOS is unsupported until a
+separate implementation and a macOS run exist.
 
 ## Installation
 
